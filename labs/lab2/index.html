@@ -14,29 +14,6 @@
     <div class="container" id="search">
         <input type="text" id="query">
         <button type="button" class="btn btn-primary" id="searchButton">Search</button>
-        <script>
-
-            $("#searchButton").click(function () {
-                doSearch();
-            });
-
-            function doSearch() {
-                // Built by LucyBot. www.lucybot.com
-                var url = "https://api.nytimes.com/svc/movies/v2/reviews/search.json";
-                url += '?' + $.param({
-                    'api-key': "50d35334e040453e8a70071d58ee10e0",
-                    'query': $("#query").val()
-                });
-                $.ajax({
-                    url: url,
-                    method: 'GET',
-                }).done(function (result) {
-                    console.log(result);
-                }).fail(function (err) {
-                    throw err;
-                });
-            }
-        </script>
     </div>
     <div class="container" id="results"></div>
 
@@ -52,6 +29,37 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+
+    <script>
+
+        $("#searchButton").click(function () {
+            doSearch();
+        });
+
+        function doSearch() {
+            // Built by LucyBot. www.lucybot.com
+            var url = "https://api.nytimes.com/svc/movies/v2/reviews/search.json";
+            url += '?' + $.param({
+                'api-key': "50d35334e040453e8a70071d58ee10e0",
+                'query': $("#query").val()
+            });
+            $.ajax({
+                url: url,
+                method: 'GET',
+            }).done(function (result) {
+                loadResponse(result);
+                // console.log(result);
+            }).fail(function (err) {
+                throw err;
+            });
+        }
+
+        function loadResponse(response) {
+            $.each(response.results, function (index, value) {
+                $("#results").append("<p>Result " + index + ". " + value.headline + ". LINK: " + value.link.url + "</p>");
+            });
+        }
+    </script>
 </body>
 
 </html>
