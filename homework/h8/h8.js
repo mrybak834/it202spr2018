@@ -7,6 +7,8 @@ $(document).ready(function() {
     $('#title').fadeIn(3000);
 });
 
+var previousIcon;
+
 function search() {
     var zipCode = $('#zipCode').val();
 
@@ -33,7 +35,10 @@ function search() {
 
             $('#title').fadeTo(1000, 0);
 
-            console.log('THE TEXT IS : ' + text);
+            if (previousIcon) {
+                previousIcon.hide();
+            }
+
             switch (text.toLowerCase()) {
                 case 'severe thunderstorms':
                 case 'thunderstorms':
@@ -65,6 +70,7 @@ function search() {
                 case 'scattered snow showers':
                 case 'snow showers':
                     $('.snow-cloud').fadeIn(2000);
+                    previousIcon = $('.snow-cloud');
                     break;
                 case 'dust':
                 case 'foggy':
@@ -73,6 +79,7 @@ function search() {
                 case 'blustery':
                 case 'cloudy':
                 case 'mostly cloudy (night)':
+                case 'mostly cloudy':
                 case 'mostly cloudy (day)':
                 case 'partly cloudy (night)':
                 case 'partly cloudy (day)':
@@ -81,9 +88,11 @@ function search() {
                     break;
                 case 'cold':
                 case 'clear (night)':
+                case 'clear':
                 case 'sunny':
                 case 'fair (night)':
                 case 'fair (day)':
+                case 'fair':
                 case 'hot':
                     $('.sunshine').fadeIn(2000);
                     break;
