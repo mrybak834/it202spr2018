@@ -29,6 +29,14 @@ function search() {
             $('.thunder-cloud').show();
 
             // $('#output').html('<p>' + description + '<p>');
+
+            $('#temp').text(temp + 'F');
+            $('#text').text(text);
+            $('#humidity').text('Humidity ' + humidity);
+            $('#pressure').text('Pressure ' + pressure);
+            $('#visibility').text('Visibility ' + visibility);
+            $('#date').text(date);
+            $('#description').text(description);
         }
     );
 }
