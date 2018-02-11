@@ -3,7 +3,8 @@ $(document).ready(function() {
         search();
     });
 
-    $('#title').fadeIn(2000);
+    $('.centered').fadeIn(3000);
+    $('#title').fadeIn(3000);
 });
 
 function search() {
@@ -32,13 +33,17 @@ function search() {
 
             $('#title').fadeTo(1000, 0);
 
-            switch (text) {
-                case '':
-                    break;
-                default:
-                    $('.thunder-cloud').show();
-                    break;
-            }
+            // switch (text) {
+            //     case '':
+            //         break;
+            //     default:
+            //         $('.thunder-cloud').show();
+            //         break;
+            // }
+
+            $('#output').fadeIn(2000);
+            $('.thunder-cloud').fadeIn(2000);
+            $('.extra').fadeIn(2000);
 
             $('#results').html(temp + '<br>' + text);
             $('#date').text(date);

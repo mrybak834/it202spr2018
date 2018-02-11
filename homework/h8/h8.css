@@ -10,7 +10,7 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-columns: 40fr 20fr 40fr;
-    grid-template-rows: 40fr 40fr 20fr;
+    grid-template-rows: 40fr 40fr 10fr 10fr;
 
     background-image: url('../h8/rain.gif');
     background-size: cover;
@@ -21,13 +21,23 @@ body {
     overflow: hidden;
 }
 
-#title {
+.centered {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    color: rgba(245, 245, 245, 0.863);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Montserrat', sans-serif;
     display: none;
 }
 
 #output {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
+    display: none;
+}
+
+.weather-effect {
+    display: none;
 }
 
 #results {
@@ -35,22 +45,15 @@ body {
     font-size: 2rem;
 }
 
-.centered {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    color: rgba(245, 245, 245, 0.863);
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.weather-effect {
+#title {
     display: none;
 }
 
 .extra {
     grid-column: 2 / 3;
-    grid-row: 3 / 4;
+    grid-row: 4 / 5;
     color: rgba(247, 247, 247, 0.541);
+    display: none;
 }
 
 /** Input Field start **/
