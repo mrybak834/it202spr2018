@@ -21,13 +21,17 @@ body {
     overflow: hidden;
 }
 
+#title {
+    display: none;
+}
+
 #output {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
 }
 
 #results {
-    color: rgb(255, 255, 255);
+    color: rgba(255, 255, 255, 0.795);
     font-size: 2rem;
 }
 

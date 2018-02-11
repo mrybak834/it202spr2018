@@ -1,5 +1,9 @@
-$('#searchButton').click(function() {
-    search();
+$(document).ready(function() {
+    $('#searchButton').click(function() {
+        search();
+    });
+
+    $('#title').fadeIn(2000);
 });
 
 function search() {
@@ -26,6 +30,8 @@ function search() {
             console.log('Pressure: ' + pressure);
             console.log('Visibility: ' + visibility);
 
+            $('#title').fadeTo(1000, 0);
+
             switch (text) {
                 case '':
                     break;
@@ -34,12 +40,7 @@ function search() {
                     break;
             }
 
-            $('#results').html(
-                '&nbsp;&nbsp;&nbsp;' +
-                    temp +
-                    'F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
-                    text
-            );
+            $('#results').html(temp + '<br>' + text);
             $('#date').text(date);
             $('#description').text(description);
         }
