@@ -7,15 +7,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <style>
+        .screen {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container" id="home"></div>
-    <div class="container" id="search">
+    <div class="container screen" id="home">
+        <button type="button" class="btn btn-primary" id="start">Get Started</button>
+    </div>
+    <div class="container screen" id="search">
         <input type="text" id="query">
         <button type="button" class="btn btn-primary" id="searchButton">Search</button>
     </div>
-    <div class="container" id="results"></div>
+    <div class="container screen" id="results"></div>
 
 
     <!-- Latest compiled and minified CSS -->
@@ -32,8 +39,16 @@
 
     <script>
 
+        $(document).ready(function () {
+            $("#home").show();
+        });
+
         $("#searchButton").click(function () {
             doSearch();
+        });
+
+        $("#start").click(function () {
+            $()
         });
 
         function doSearch() {
