@@ -26,15 +26,20 @@ function search() {
             console.log('Pressure: ' + pressure);
             console.log('Visibility: ' + visibility);
 
-            $('.thunder-cloud').show();
+            switch (text) {
+                case '':
+                    break;
+                default:
+                    $('.thunder-cloud').show();
+                    break;
+            }
 
-            // $('#output').html('<p>' + description + '<p>');
-
-            $('#temp').text(temp + 'F');
-            $('#text').text(text);
-            $('#humidity').text('Humidity ' + humidity);
-            $('#pressure').text('Pressure ' + pressure);
-            $('#visibility').text('Visibility ' + visibility);
+            $('#results').html(
+                '&nbsp;&nbsp;&nbsp;' +
+                    temp +
+                    'F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' +
+                    text
+            );
             $('#date').text(date);
             $('#description').text(description);
         }

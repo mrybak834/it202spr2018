@@ -26,6 +26,11 @@ body {
     grid-row: 1 / 2;
 }
 
+#results {
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+}
+
 .centered {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
@@ -36,6 +41,12 @@ body {
 
 .weather-effect {
     display: none;
+}
+
+.extra {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    color: rgba(247, 247, 247, 0.541);
 }
 
 /** Input Field start **/
