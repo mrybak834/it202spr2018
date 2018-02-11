@@ -33,16 +33,70 @@ function search() {
 
             $('#title').fadeTo(1000, 0);
 
-            // switch (text) {
-            //     case '':
-            //         break;
-            //     default:
-            //         $('.thunder-cloud').show();
-            //         break;
-            // }
+            console.log('THE TEXT IS : ' + text);
+            switch (text.toLowerCase()) {
+                case 'severe thunderstorms':
+                case 'thunderstorms':
+                case 'isolated thunderstorms':
+                case 'scattered thunderstorms':
+                case 'thundershowers':
+                    $('.thunder-cloud').fadeIn(2000);
+                    break;
+                case 'tropical storm':
+                case 'hurricane':
+                case 'mixed rain and sleet':
+                case 'fleeting drizzle':
+                case 'drizzle':
+                case 'freezing rain':
+                case 'showers':
+                case 'mixed rain and hail':
+                case 'scattered showers':
+                    $('.rain-cloud').fadeIn(2000);
+                    break;
+                case 'mixed rain and snow':
+                case 'mixed snow and sleet':
+                case 'snow flurries':
+                case 'light snow showers':
+                case 'blowing snow':
+                case 'snow':
+                case 'hail':
+                case 'sleet':
+                case 'heavy snow':
+                case 'scattered snow showers':
+                case 'snow showers':
+                    $('.snow-cloud').fadeIn(2000);
+                    break;
+                case 'dust':
+                case 'foggy':
+                case 'haze':
+                case 'smoky':
+                case 'blustery':
+                case 'cloudy':
+                case 'mostly cloudy (night)':
+                case 'mostly cloudy (day)':
+                case 'partly cloudy (night)':
+                case 'partly cloudy (day)':
+                case 'partly cloudy':
+                    $('.sun-cloud').fadeIn(2000);
+                    break;
+                case 'cold':
+                case 'clear (night)':
+                case 'sunny':
+                case 'fair (night)':
+                case 'fair (day)':
+                case 'hot':
+                    $('.sunshine').fadeIn(2000);
+                    break;
+                case 'tornado':
+                case 'windy':
+                    $('.windy-cloud').fadeIn(2000);
+                    break;
+                default:
+                    $('.sunshine').fadeIn(2000);
+                    break;
+            }
 
             $('#output').fadeIn(2000);
-            $('.thunder-cloud').fadeIn(2000);
             $('.extra').fadeIn(2000);
 
             $('#results').html(temp + '<br>' + text);
