@@ -19,6 +19,8 @@ body {
 
     overflow-y: auto;
     overflow: hidden;
+
+    font-family: 'Montserrat', sans-serif;
 }
 
 .centered {
@@ -41,7 +43,7 @@ body {
 }
 
 #results {
-    color: #f2f2f3be;
+    color: #d7d7ecf1;
     font-size: 2rem;
 }
 
