@@ -26,7 +26,9 @@ function search() {
             console.log('Pressure: ' + pressure);
             console.log('Visibility: ' + visibility);
 
-            $('#output').html('<p>' + description + '<p>');
+            $('.thunder-cloud').show();
+
+            // $('#output').html('<p>' + description + '<p>');
         }
     );
 }
