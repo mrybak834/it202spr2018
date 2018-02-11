@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 40fr 20fr 40fr;
+    grid-template-rows: 40fr 40fr 20fr;
+
+    background-image: url('../h8/rain.gif');
+    background-size: cover;
+
+    text-align: center;
+
+    overflow-y: auto;
+    overflow: hidden;
+}
+
+.centered {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    color: rgba(245, 245, 245, 0.863);
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#title {
+}
+
+:focus {
+    outline: none;
+}
+
+.input {
+    width: 100%;
+    margin: 40px 3%;
+    position: relative;
+}
+
+/* necessary to give position: relative to parent. */
+input[type='text'] {
+    text-align: center;
+    background: none;
+    font: 15px/24px 'Muli', sans-serif;
+    color: rgba(255, 255, 255, 0.445);
+    width: 100%;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+
+.effect-1,
+.effect-2,
+.effect-3 {
+    border: 0;
+    padding: 7px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.effect-1 ~ .focus-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: rgba(245, 255, 111, 0.267);
+    transition: 0.4s;
+}
+.effect-1:focus ~ .focus-border {
+    width: 100%;
+    transition: 0.4s;
+}
+
+button {
+    color: var(--color);
+    transition: 0.5s;
+}
+button {
+    background: none;
+    border: 1px solid;
+    font: inherit;
+    line-height: 0.2;
+    padding: 1em 2em;
+}
+button:hover,
+button:focus {
+    border-color: var(--hover);
+    color: rgb(253, 249, 15);
+}
+
+.raise {
+    --color: #ffa260;
+    --hover: -hueadjust(#502100, 45deg);
+}
+
+.raise:hover,
+.raise:focus {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+}
+
+#output {
+}
