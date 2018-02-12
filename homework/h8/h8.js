@@ -46,6 +46,7 @@ function search() {
                 case 'scattered thunderstorms':
                 case 'thundershowers':
                     $('.thunder-cloud').fadeIn(2000);
+                    previousIcon = $('.thunder-cloud');
                     break;
                 case 'tropical storm':
                 case 'hurricane':
@@ -57,6 +58,7 @@ function search() {
                 case 'mixed rain and hail':
                 case 'scattered showers':
                     $('.rain-cloud').fadeIn(2000);
+                    previousIcon = $('.rain-cloud');
                     break;
                 case 'mixed rain and snow':
                 case 'mixed snow and sleet':
@@ -85,6 +87,7 @@ function search() {
                 case 'partly cloudy (day)':
                 case 'partly cloudy':
                     $('.sun-cloud').fadeIn(2000);
+                    previousIcon = $('.sun-cloud');
                     break;
                 case 'cold':
                 case 'clear (night)':
@@ -95,13 +98,16 @@ function search() {
                 case 'fair':
                 case 'hot':
                     $('.sunshine').fadeIn(2000);
+                    previousIcon = $('.sunshine');
                     break;
                 case 'tornado':
                 case 'windy':
                     $('.windy-cloud').fadeIn(2000);
+                    previousIcon = $('.windy-cloud');
                     break;
                 default:
                     $('.sunshine').fadeIn(2000);
+                    previousIcon = $('.sunshine');
                     break;
             }
 
