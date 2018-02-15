@@ -1,0 +1,428 @@
+{
+  "meta" : {
+    "view" : {
+      "id" : "zzzz-zzzz",
+      "name" : "Problem Landlord List - Map",
+      "attribution" : "City of Chicago",
+      "attributionLink" : "http://www.cityofchicago.org",
+      "averageRating" : 0,
+      "category" : "Buildings",
+      "description" : "This list describes landlords and property owners who are designated  \"problem landlords\". Landlords on this list have had two or more administrative hearing causes brought against them and were found liable or defaulted to one or more serious building violations.",
+      "displayType" : "map",
+      "downloadCount" : 0,
+      "hideFromCatalog" : false,
+      "hideFromDataJson" : false,
+      "indexUpdatedAt" : 1472313688,
+      "moderationStatus" : true,
+      "newBackend" : false,
+      "numberOfComments" : 0,
+      "oid" : 0,
+      "provenance" : "community",
+      "publicationAppendEnabled" : false,
+      "publicationGroup" : 2152325,
+      "publicationStage" : "published",
+      "rowsUpdatedAt" : 1468204574,
+      "rowsUpdatedBy" : "3qqc-w7ag",
+      "tableId" : 11842637,
+      "totalTimesRated" : 0,
+      "viewCount" : 0,
+      "viewType" : "tabular",
+      "columns" : [ {
+        "id" : -1,
+        "name" : "sid",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":sid",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "id",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":id",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "position",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":position",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "created_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":created_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_at",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_at",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "updated_meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":updated_meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : -1,
+        "name" : "meta",
+        "dataTypeName" : "meta_data",
+        "fieldName" : ":meta",
+        "position" : 0,
+        "renderTypeName" : "meta_data",
+        "format" : { },
+        "flags" : [ "hidden" ]
+      }, {
+        "id" : 262411472,
+        "name" : "ADDRESS",
+        "dataTypeName" : "text",
+        "description" : "Primary address of building (used for geocoding and other geographic information).",
+        "fieldName" : "address",
+        "position" : 1,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185912,
+        "width" : 268,
+        "format" : {
+          "align" : "left",
+          "aggregate" : "count"
+        }
+      }, {
+        "id" : 262411473,
+        "name" : "SECONDARY ADDRESS",
+        "dataTypeName" : "text",
+        "description" : "An alternative address that could be used to describe building location. This was not used for any geocoding.",
+        "fieldName" : "secondary_address",
+        "position" : 2,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185913,
+        "width" : 217,
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 262411475,
+        "name" : "RESPONDENT",
+        "dataTypeName" : "text",
+        "description" : "The name of the individual or entity responsible for the address listed. If more than one owner is listed, a pipe (\"|\") separates each owner in the list.",
+        "fieldName" : "respondent",
+        "position" : 3,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185914,
+        "width" : 359,
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 262411476,
+        "name" : "COMMUNITY AREA",
+        "dataTypeName" : "text",
+        "description" : "Name of the community area defined by the City of Chicago. For context, see: http://en.wikipedia.org/wiki/Community_areas_in_Chicago",
+        "fieldName" : "community_area",
+        "position" : 4,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185915,
+        "width" : 268,
+        "format" : {
+          "align" : "left"
+        }
+      }, {
+        "id" : 262411477,
+        "name" : "COMMUNITY AREA NUMBER",
+        "dataTypeName" : "text",
+        "description" : "The ID that corresponds with COMMUNITY AREA in this dataset. For context, see: http://en.wikipedia.org/wiki/Community_areas_in_Chicago",
+        "fieldName" : "community_area_number",
+        "position" : 5,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185916,
+        "width" : 271,
+        "format" : {
+          "align" : "right"
+        }
+      }, {
+        "id" : 262411478,
+        "name" : "WARD",
+        "dataTypeName" : "text",
+        "description" : "Ward number based on the 2010 ward boundaries.",
+        "fieldName" : "ward",
+        "position" : 6,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185917,
+        "width" : 148,
+        "format" : {
+          "align" : "right"
+        }
+      }, {
+        "id" : 262411479,
+        "name" : "CENSUS TRACTS",
+        "dataTypeName" : "text",
+        "description" : "Census tract number based on the 2010 census tracts. For more information, see https://www.census.gov/geo/reference/gtc/gtc_ct.html",
+        "fieldName" : "census_tracts",
+        "position" : 7,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185918,
+        "width" : 256,
+        "format" : {
+          "align" : "right"
+        }
+      }, {
+        "id" : 262411480,
+        "name" : "CENSUS BLOCKS",
+        "dataTypeName" : "text",
+        "description" : "Census blocks based on the 2010 census blocks. For more information, see: https://www.census.gov/geo/maps-data/maps/block/2010/",
+        "fieldName" : "census_blocks",
+        "position" : 8,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185919,
+        "width" : 256,
+        "format" : {
+          "align" : "right"
+        }
+      }, {
+        "id" : 262411481,
+        "name" : "STREET BLOCK ID",
+        "dataTypeName" : "text",
+        "fieldName" : "street_block_id",
+        "position" : 9,
+        "renderTypeName" : "text",
+        "tableColumnId" : 24185920,
+        "width" : 280,
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "false",
+          "align" : "right"
+        }
+      }, {
+        "id" : 262411482,
+        "name" : "X_COORDINATE",
+        "dataTypeName" : "number",
+        "description" : "The east-west coordinate defined in feet, based on NAD 83 - State Plane Eastern IL ",
+        "fieldName" : "x_coordinate",
+        "position" : 10,
+        "renderTypeName" : "number",
+        "tableColumnId" : 24185921,
+        "width" : 244,
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "right"
+        }
+      }, {
+        "id" : 262411483,
+        "name" : "Y_COORDINATE",
+        "dataTypeName" : "number",
+        "description" : "The north-south coordinate defined in feet, based on NAD 83 - State Plane Eastern IL ",
+        "fieldName" : "y_coordinate",
+        "position" : 11,
+        "renderTypeName" : "number",
+        "tableColumnId" : 24185922,
+        "width" : 244,
+        "format" : {
+          "precisionStyle" : "standard",
+          "noCommas" : "true",
+          "align" : "right"
+        }
+      }, {
+        "id" : 262411484,
+        "name" : "LONGITUDE",
+        "dataTypeName" : "number",
+        "fieldName" : "longitude",
+        "position" : 12,
+        "renderTypeName" : "number",
+        "tableColumnId" : 24185923,
+        "width" : 208,
+        "format" : { }
+      }, {
+        "id" : 262411485,
+        "name" : "LATITUDE",
+        "dataTypeName" : "number",
+        "fieldName" : "latitude",
+        "position" : 13,
+        "renderTypeName" : "number",
+        "tableColumnId" : 24185924,
+        "width" : 196,
+        "format" : { }
+      }, {
+        "id" : 262411486,
+        "name" : "LOCATION",
+        "dataTypeName" : "location",
+        "fieldName" : "location",
+        "position" : 14,
+        "renderTypeName" : "location",
+        "tableColumnId" : 24185925,
+        "width" : 196,
+        "format" : { },
+        "subColumnTypes" : [ "human_address", "latitude", "longitude", "machine_address", "needs_recoding" ]
+      } ],
+      "displayFormat" : {
+        "bkgdLayers" : [ {
+          "layerKey" : "Google Roadmap",
+          "opacity" : 1
+        } ],
+        "disableGeolocator" : false,
+        "exclusiveLayers" : false,
+        "viewDefinitions" : [ {
+          "uid" : "self",
+          "highlightColor" : "#ddeaf0",
+          "color" : "#0000ff",
+          "plot" : {
+            "locationId" : 24185925,
+            "titleId" : 24185912,
+            "descriptionColumns" : [ {
+              "tableColumnId" : 24185914
+            }, {
+              "tableColumnId" : 24185913
+            } ]
+          },
+          "flyoutsNoLabel" : false,
+          "opacity" : 1,
+          "plotStyle" : "point"
+        } ]
+      },
+      "grants" : [ {
+        "inherited" : true,
+        "type" : "viewer",
+        "flags" : [ "public" ]
+      } ],
+      "metadata" : {
+        "rdfSubject" : "0",
+        "custom_fields" : {
+          "Metadata" : {
+            "Time Period" : "January 2015",
+            "Frequency" : "Updated semi-annually",
+            "Data Owner" : "Buildings"
+          }
+        },
+        "availableDisplayTypes" : [ "map", "table", "fatrow", "page" ],
+        "renderTypeConfig" : {
+          "visible" : {
+            "fatrow" : true,
+            "page" : true,
+            "map" : true,
+            "table" : true
+          },
+          "active" : {
+            "fatrow" : {
+              "id" : "self"
+            },
+            "page" : {
+              "id" : "self"
+            },
+            "table" : {
+              "id" : "self"
+            }
+          }
+        }
+      },
+      "query" : {
+        "filterCondition" : {
+          "type" : "operator",
+          "value" : "AND",
+          "children" : [ {
+            "type" : "operator",
+            "value" : "GREATER_THAN",
+            "children" : [ {
+              "columnId" : -1,
+              "type" : "column",
+              "value" : "LONGITUDE"
+            }, {
+              "type" : "literal",
+              "value" : "-88.362459664787"
+            } ]
+          }, {
+            "type" : "operator",
+            "value" : "LESS_THAN",
+            "children" : [ {
+              "columnId" : -1,
+              "type" : "column",
+              "value" : "LONGITUDE"
+            }, {
+              "type" : "literal",
+              "value" : "-86.941103463814"
+            } ]
+          }, {
+            "type" : "operator",
+            "value" : "GREATER_THAN",
+            "children" : [ {
+              "columnId" : -1,
+              "type" : "column",
+              "value" : "LATITUDE"
+            }, {
+              "type" : "literal",
+              "value" : "41.630255576674"
+            } ]
+          }, {
+            "type" : "operator",
+            "value" : "LESS_THAN",
+            "children" : [ {
+              "columnId" : -1,
+              "type" : "column",
+              "value" : "LATITUDE"
+            }, {
+              "type" : "literal",
+              "value" : "41.934393881815"
+            } ]
+          } ]
+        }
+      },
+      "rights" : [ "read" ],
+      "tableAuthor" : {
+        "id" : "3qqc-w7ag",
+        "displayName" : "Tom Schenk Jr",
+        "profileImageUrlLarge" : "/api/users/3qqc-w7ag/profile_images/LARGE",
+        "profileImageUrlMedium" : "/api/users/3qqc-w7ag/profile_images/THUMB",
+        "profileImageUrlSmall" : "/api/users/3qqc-w7ag/profile_images/TINY",
+        "screenName" : "Tom Schenk Jr",
+        "type" : "interactive",
+        "flags" : [ "organizationMember" ]
+      },
+      "tags" : [ "buildings", "violations" ],
+      "flags" : [ "unsaved" ]
+    }
+  },
+  "data" : [ [ 1, "D8696D26-B91E-4788-9E84-A3FBA23EC770", 1, 1468179354, "700397", 1468179354, "700397", null, "108 W 113TH PL", null, "Woo S Chung; Eun Y Sakanashi", "ROSELAND", "49", "34", "17031491300", "170314913002003", "52291", "1177434.4167194641", "1829735.0594765951", "-87.626052479", "41.6881178348", [ null, "41.6881178348", "-87.626052479", null, false ] ]
+, [ 2, "E835E2BC-8254-4224-BBE5-14CB311CDC77", 2, 1468179354, "700397", 1468179354, "700397", null, "1353-55 W 110TH PL", null, "Felice's Investments, Inc", "MORGAN PARK", "75", "34", "17031750100", "170317501004031", "40920", "1169062.4848081134", "1831441.8934397784", "-87.6566523483", "41.6929862058", [ null, "41.6929862058", "-87.6566523483", null, false ] ]
+, [ 3, "9FC07206-A51C-43EF-B4EF-3C5417DD1D29", 3, 1468179354, "700397", 1468179354, "700397", null, "3758 W 56TH PL", null, "Hameed O Andu", "WEST ELSDON", "62", "23", "17031620400", "170316204001011", "36994", "1152036.0221705413", "1866911.3023172112", "-87.7180617148", "41.7906705731", [ null, "41.7906705731", "-87.7180617148", null, false ] ]
+, [ 4, "9694D1D6-4B22-44BE-AC95-B66E2561E7A7", 4, 1468179354, "700397", 1468179354, "700397", null, "4725 W JACKSON BLVD", null, "Danny Wilmington", "AUSTIN", "25", "28", "17031252202", "170312522023002", "34972", "1144820.765354329", "1898230.4865562152", "-87.7437304528", "41.8767535335", [ null, "41.8767535335", "-87.7437304528", null, false ] ]
+, [ 5, "5B4811EA-C071-4CF7-BC10-6DF232172615", 5, 1468179354, "700397", 1468179354, "700397", null, "5120 S HERMITAGE AVE", null, "Enos L Vassail; Orni M Vassail", "NEW CITY", "61", "16", "17031611800", "170316118001020", "25209", "1165507.8009495442", "1870639.9529089325", "-87.6685580382", "41.8006272561", [ null, "41.8006272561", "-87.6685580382", null, false ] ]
+, [ 6, "33CD3918-6A65-4BE8-8E03-7CC2DAB16327", 6, 1468179354, "700397", 1468179354, "700397", null, "5249 W GLADYS AVE", null, "Michael Fort", "AUSTIN", "25", "29", "17031252102", "170312521022007", "6063", "1141249.833153729", "1897793.3002597953", "-87.7568527612", "41.8756204042", [ null, "41.8756204042", "-87.7568527612", null, false ] ]
+, [ 7, "CB717A94-DBEB-474D-B0BB-15A10B3F55CB", 7, 1468179354, "700397", 1468179354, "700397", null, "6116 S ST LAWRENCE AVE", null, "Greenwood Investment Properties, LLC", "WOODLAWN", "42", "20", "17031420600", "170314206002000", "34", "1181249.4725410563", "1864497.4496505416", "-87.6110179015", "41.7834230916", [ null, "41.7834230916", "-87.6110179015", null, false ] ]
+, [ 8, "9C0FCAF3-CB5D-41BC-BCD4-64178538162A", 8, 1468179354, "700397", 1468179354, "700397", null, "6207 S WOOD ST", null, "Harold Rose", "WEST ENGLEWOOD", "67", "15", "17031670700", "170316707002007", "7021", "1165454.9543184887", "1863475.0923129702", "-87.6689548992", "41.7809671136", [ null, "41.7809671136", "-87.6689548992", null, false ] ]
+, [ 9, "E8847F63-77A6-4EBB-B3CF-85D31FCD5500", 9, 1468179354, "700397", 1468179354, "700397", null, "6218 S VERNON AVE", null, "Inclined Plane Enterprises LLC", "WOODLAWN", "42", "20", "17031420600", "170314206002012", "7243", "1180281.7460042322", "1863782.3618331864", "-87.6145877986", "41.7814830749", [ null, "41.7814830749", "-87.6145877986", null, false ] ]
+, [ 10, "7507AFA6-5826-44AB-B822-3266E5EDD0F6", 10, 1468179354, "700397", 1468179354, "700397", null, "6430 S YALE AVE", null, "Hazel Farley; Samuel Farley", "ENGLEWOOD", "68", "20", "17031680900", "170316809002017", "5183", "1175574.7055732505", "1862185.2273310516", "-87.6318925469", "41.7772070354", [ null, "41.7772070354", "-87.6318925469", null, false ] ]
+, [ 11, "B61364CB-F1A1-492C-8059-03016846D50E", 11, 1468179354, "700397", 1468179354, "700397", null, "6929 S GREEN ST", null, "Curtis Turner", "ENGLEWOOD", "68", "06", "17031681100", "170316811002006", "1512", "1171873.3622098998", "1858778.4513065836", "-87.6455614559", "41.7679404821", [ null, "41.7679404821", "-87.6455614559", null, false ] ]
+, [ 12, "E62486D0-EC30-48A5-9DF1-CBC9F9057493", 12, 1468179354, "700397", 1468179354, "700397", null, "7013 S CALIFORNIA AVE", null, "Trechy Beasley", "CHICAGO LAWN", "66", "17", "17031660900", "170316609003025", "39741", "1158960.631798824", "1857946.1422378677", "-87.6929154749", "41.7659300979", [ null, "41.7659300979", "-87.6929154749", null, false ] ]
+, [ 13, "644EB467-DEA9-420A-878D-081BEF77A591", 13, 1468179354, "700397", 1468179354, "700397", null, "7616 S MORGAN ST", null, "Jerome Bailey", "AUBURN GRESHAM", "71", "17", "17031710200", "170317102003006", "28617", "1170926.1338597438", "1854232.0924170474", "-87.6491660167", "41.7554854307", [ null, "41.7554854307", "-87.6491660167", null, false ] ]
+, [ 14, "101D6B2A-C763-475E-9BC5-86CF915C2F1F", 14, 1468179354, "700397", 1468179354, "700397", null, "7718-20 S CARPENTER ST", null, "Terrence Bell", "AUBURN GRESHAM", "71", "17", "17031710200", "170317102003011", "1872", "1170613.8881047233", "1853539.3106319918", "-87.6503304734", "41.7535911554", [ null, "41.7535911554", "-87.6503304734", null, false ] ]
+, [ 15, "F3277F6C-90DF-4F7D-AEE4-23E40E09D54E", 15, 1468179354, "700397", 1468179354, "700397", null, "8003-05 S INGLESIDE AVE", "935 E 80TH ST", "Tahir M Sheikh", "CHATHAM", "44", "08", "17031440101", "170314401011007", "48582", "1183992.8172911045", "1852104.1949734893", "-87.6013466608", "41.7493511335", [ null, "41.7493511335", "-87.6013466608", null, false ] ]
+, [ 16, "4D9041AC-CCED-4BFD-B6B9-9FBFB5520552", 16, 1468179354, "700397", 1468179354, "700397", null, "8101 S JEFFERY BLVD", null, "Property Tax Professionals LLC", "SOUTH CHICAGO", "46", "08", "17031460500", "170314605005007", "16395", "1190976.9404438473", "1851628.6662926204", "-87.5757697848", "41.7478803456", [ null, "41.7478803456", "-87.5757697848", null, false ] ]
+, [ 17, "1D2900BF-DDB7-4870-8076-3052A9D48C12", 17, 1468179354, "700397", 1468179354, "700397", null, "832 W GARFIELD BLVD", null, "Jimmie Lockett", "NEW CITY", "61", "20", "17031612100", "170316121001043", "26254", "1171529.6003000832", "1868419.547125574", "-87.6465392442", "41.7944043015", [ null, "41.7944043015", "-87.6465392442", null, false ] ]
+, [ 18, "3BC152DB-6BAF-48CC-9BBE-D0A31ACB2B30", 18, 1468179354, "700397", 1468179354, "700397", null, "9235 S BRANDON AVE", null, "Brandy Collins", "SOUTH CHICAGO", "46", "10", "17031461000", "170314610001039", "593", "1198975.5318477328", "1844185.2180786277", "-87.5467103674", "41.7272579812", [ null, "41.7272579812", "-87.5467103674", null, false ] ]
+ ]
+}

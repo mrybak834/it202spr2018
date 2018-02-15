@@ -22,7 +22,13 @@
         <input type="text" id="query">
         <button type="button" class="btn btn-primary" id="searchButton">Search</button>
     </div>
-    <div class="container screen" id="results"></div>
+
+    <div class="container screen" id="results">
+        <div class="card" id="template">
+            <div class="card-block">
+            </div>
+        </div>
+    </div>
 
 
     <!-- Latest compiled and minified CSS -->
@@ -41,6 +47,7 @@
 
         $(document).ready(function () {
             $("#home").show();
+
         });
 
         $("#searchButton").click(function () {
@@ -48,10 +55,14 @@
         });
 
         $("#start").click(function () {
-            $()
+            $("#search").show();
         });
 
         function doSearch() {
+            $("#search").hide();
+            $("#results").show();
+
+
             // Built by LucyBot. www.lucybot.com
             var url = "https://api.nytimes.com/svc/movies/v2/reviews/search.json";
             url += '?' + $.param({
@@ -68,10 +79,11 @@
                 throw err;
             });
         }
-
         function loadResponse(response) {
             $.each(response.results, function (index, value) {
-                $("#results").append("<p>Result " + index + ". " + value.headline + ". LINK: " + value.link.url + "</p>");
+                var card = $("#template").clone();
+                card.find(".card-block").text(value.headline);
+                card.appendTo("#results");
             });
         }
     </script>
