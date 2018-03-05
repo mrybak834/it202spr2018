@@ -37,11 +37,13 @@ html,body {
   }
 
 
-#title, #input, #map {
+#title, #input, #map, #main {
     display: none;
 }
 
 #map{
-    height: 100%;
-    overflow: auto;
+    margin: auto;
+    text-align: left;
+    width: 100%;
+    height: 70%;
 }
