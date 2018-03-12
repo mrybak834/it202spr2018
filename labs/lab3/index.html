@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>First Game</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <style type="text/css" media="screen">
+        canvas {
+            display: block;
+            margin: 1em auto;
+            background: url(./space.jpg);
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas" width="400" height="600"></canvas>
+    <script>
+
+        // Set canvas
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+
+        // Set game objects
+        var game = { lives: 3, score: 0, state: "play" };
+        var player = { x: 75, y: 300, color: "magenta", radius: 25 };
+        var harm = { x: c.width, speed: 1, y: 100, color: "red", radius: 25 };
+        var benefit = { x: c.width, y: 500, color: "green", radius: 25 };
+
+        // Determine user input
+        $(document).keydown(function (e) {
+            var code = e.keyCode || e.which;
+
+
+            console.log("User pressed " + e.keyCode);
+            if (code == 38) {
+                player.y -= 10;
+            }
+            if (code == 40) {
+                player.y += 10;
+            }
+            if (code == 37) {
+                player.x -= 10;
+            }
+            if (code == 39) {
+                player.x += 10;
+            }
+            // Pause game on spacebar
+            if (code == 32) {
+                if (game.state == "play") {
+                    game.state = "paused";
+                }
+                else if (game.state != "over") {
+                    game.state = "play";
+                    draw();
+                }
+            }
+        });
+
+
+
+        // Game loop
+        function draw() {
+            ctx.clearRect(0, 0, c.width, c.height);
+
+            // Position entities
+            harm.x = harm.x - harm.speed;
+            benefit.x--;
+            if (harm.x <= 0) {
+                harm.x = c.width;
+                harm.y = Math.floor((Math.random() * 590) + 10);
+            }
+            if (benefit.x <= 0) {
+                benefit.x = c.width;
+                benefit.y = Math.floor((Math.random() * 590) + 10);
+            }
+
+            // Draw harm
+            var img = new Image()
+            img.src = "./harm.png"
+            ctx.beginPath();
+            ctx.drawImage(img, harm.x - harm.radius, harm.y - harm.radius, 1.5 * harm.radius, 1.5 * harm.radius);
+
+            // Draw benefit
+            var img2 = new Image()
+            img2.src = "./benefit.png"
+            ctx.beginPath();
+            ctx.drawImage(img2, benefit.x - benefit.radius, benefit.y - benefit.radius, 1.5 * benefit.radius, 1.5 * benefit.radius);
+
+
+            // Collision check harm
+            // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+            var dx = player.x - harm.x;
+            var dy = player.y - harm.y;
+            var distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < player.radius + harm.radius) {
+                // collision detected!
+                console.log("Harm collision");
+
+                // Reposition
+                harm.x = c.width;
+                harm.y = Math.floor((Math.random() * 590) + 10);
+                game.lives--;
+
+                // Game over
+                if (game.lives == 0) {
+                    game.state = "over";
+                    gameOver();
+                    return
+                }
+            }
+
+
+            // Collision check benefit
+            // https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+            var dx2 = player.x - benefit.x;
+            var dy2 = player.y - benefit.y;
+            var distance = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+            if (distance < player.radius + benefit.radius) {
+                // Reposition
+                benefit.x = c.width;
+                benefit.y = Math.floor((Math.random() * 590) + 10);
+                game.score++;
+
+                if (game.score % 3 == 0) {
+                    harm.speed++
+                }
+            }
+
+
+            // Draw player
+            var img3 = new Image()
+            img3.src = "./player.png"
+            ctx.beginPath();
+            ctx.drawImage(img3, player.x, player.y, 2 * player.radius, 2 * player.radius);
+
+            // Keep playing
+            if (game.state == "play") {
+                requestAnimationFrame(draw);
+            }
+
+            // Fill text
+            ctx.fillStyle = "magenta";
+            ctx.fillText("Score: " + game.score, 10, 10);
+            ctx.fillText("Lives: " + game.lives, 10, 20);
+            ctx.fillText("Level: " + harm.speed, 10, 30);
+
+        }
+
+        // Start game loop
+        draw();
+
+        function gameOver() {
+            ctx.fillText("GAME OVER", 100, 100);
+        }
+
+    </script>
+</body>
+
+</html>
