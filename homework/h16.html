@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homework 13</title>
+    <!-- Include Dexie -->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script>
+        //
+        // Define your database
+        //
+        var db = new Dexie("AppDB");
+        db.version(1).stores({
+            Restaurants: '++id,name,cuisine'
+        });
+
+        db.Restaurants.clear();
+
+        db.Restaurants.add({ name: "The Sexy Steak", cuisine: "Brazilian Fusion" })
+        db.Restaurants.add({ name: "Flying Lotus", cuisine: "Thai" })
+        db.Restaurants.add({ name: "Lil Goat", cuisine: "Post-Modern Vegan" })
+
+        $("body").append("<ul>");
+        db.Restaurants.where('cuisine').noneOf(['Thai']).each(function (restaurant) {
+            console.log("Found: " + JSON.stringify(restaurant));
+            $("body").append('<li>Name: ' + restaurant.name + ", Cuisine: " + restaurant.cuisine + '</li>');
+        });
+        $("body").append("</ul>");
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
