@@ -68,14 +68,14 @@ body {
     box-sizing: border-box;
 }
 
-/* .box {
+.box {
     width: 100px;
     height: 100%;
     background: black;
     float: left;
     display: inline-block;
     margin-right: 10px;
-} */
+}
 
 .images-wrapper {
     width: 60%;

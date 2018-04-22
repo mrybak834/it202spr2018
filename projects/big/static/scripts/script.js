@@ -1,5 +1,4 @@
 // https://api.tumblr.com/v2/blog/blackpplluvtshirts.tumblr.com/posts/photo?api_key=VV08xHlettWixKTtehz4B2h6jnBbIIB4mTsswmxLGb8eT8CXdh
-// https://api.tumblr.com/v2/blog/blackpplluvtshirts.tumblr.com/posts/text?api_key=VV08xHlettWixKTtehz4B2h6jnBbIIB4mTsswmxLGb8eT8CXdh&filter=text
 // blackpplluvtshirts.tumblr.com
 // tattoome.tumblr.com
 $(document).ready(function() {
@@ -8,6 +7,10 @@ $(document).ready(function() {
     var compBlog = '';
     var userPhotos = [];
     var compPhotos = [];
+    var userProfile = [];
+    var compProfile = [];
+    var tumblrAPI = 'VV08xHlettWixKTtehz4B2h6jnBbIIB4mTsswmxLGb8eT8CXdh';
+    var googleAPI = 'AIzaSyBfenquXuC4TC3aN1hnRtdYZwJjarsNItg';
 
     // Submit personal blog
     $('#user-submit').click(function() {
@@ -19,6 +22,7 @@ $(document).ready(function() {
         $('#comp-form-field').toggleClass('hidden');
     });
 
+    // Submit comparison blog
     $('#comp-submit').click(function() {
         compBlog = $('#comp-blog-input').val();
         console.log(compBlog);
@@ -28,13 +32,28 @@ $(document).ready(function() {
         $('#start').toggleClass('hidden');
         $('#results').toggleClass('hidden');
 
+        // Run all queries and analysis
         getResults();
     });
 
     function getResults() {
         // Obtain blogs
         console.log('Attempting to get blogs');
-        userData = {
+        // $.ajax({
+        //     type: 'POST',
+        //     url:
+        //         'https://api.tumblr.com/v2/blog/blackpplluvtshirts.tumblr.com/posts/photo?api_key=' +
+        //         tumblrAPI,
+        //     dataType: 'jsonp',
+        //     success: function(data, textStatus, jqXHR) {
+        //         console.log('Tumblr API result');
+        //         console.log(data);
+        //     },
+        //     error: function(jqXHR, textStatus, errorThrown) {
+        //         console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
+        //     }
+        // });
+        userTumblrData = {
             meta: { status: 200, msg: 'OK' },
             response: {
                 blog: {
@@ -1749,7 +1768,7 @@ $(document).ready(function() {
                 total_posts: 219
             }
         };
-        compData = {
+        compTumblrData = {
             meta: { status: 200, msg: 'OK' },
             response: {
                 blog: {
@@ -4444,15 +4463,12 @@ $(document).ready(function() {
 
         // Obtain photos
         console.log('Storing photos');
-        $.each(userData.response.posts, function(i, post) {
+        $.each(userTumblrData.response.posts, function(i, post) {
             userPhotos.push(post.photos[0].original_size.url);
         });
-        $.each(compData.response.posts, function(i, post) {
+        $.each(compTumblrData.response.posts, function(i, post) {
             compPhotos.push(post.photos[0].original_size.url);
         });
-
-        console.log(userPhotos);
-        console.log(compPhotos);
 
         // Display photos
         userPhotos.forEach(function(photoURL) {
@@ -4468,6 +4484,56 @@ $(document).ready(function() {
                     photoURL +
                     ' alt="" /><button></button></a>'
             );
+        });
+
+        var request = JSON.stringify({
+            requests: [
+                {
+                    image: {
+                        source: {
+                            imageUri: userPhotos[0]
+                        }
+                    },
+                    features: [
+                        {
+                            type: 'LABEL_DETECTION'
+                        }
+                    ]
+                },
+                {
+                    image: {
+                        source: {
+                            imageUri: userPhotos[1]
+                        }
+                    },
+                    features: [
+                        {
+                            type: 'LABEL_DETECTION'
+                        }
+                    ]
+                }
+            ]
+        });
+
+        // Request google vision
+        $.ajax({
+            type: 'POST',
+            url:
+                'https://vision.googleapis.com/v1/images:annotate?key=' +
+                googleAPI,
+            dataType: 'json',
+            data: request,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+
+            success: function(data, textStatus, jqXHR) {
+                console.log('Google API result');
+                console.log(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
+            }
         });
     }
 });
