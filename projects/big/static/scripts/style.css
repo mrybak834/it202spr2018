@@ -1,3 +1,8 @@
+/* Prevent scrolling */
+body {
+    overflow: hidden;
+}
+
 #start {
     background: url('../assets/images/start-background.jpeg') no-repeat center
         center fixed;
@@ -53,3 +58,60 @@
 .hidden {
     display: none;
 }
+
+/* https://codepen.io/shaunrfox/pen/kBaoK */
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* .box {
+    width: 100px;
+    height: 100%;
+    background: black;
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+} */
+
+.images-wrapper {
+    width: 60%;
+    height: 200px;
+    background: #ccc;
+    margin: 1rem auto;
+    padding: 1rem;
+    overflow-y: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.attached-image {
+    position: relative;
+    height: 100%;
+    width: auto;
+    margin-right: 10px;
+    text-decoration: none;
+}
+.attached-image img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+}
+.attached-image button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background: #00cccc;
+    border-radius: 30px;
+    border: 1px solid #666;
+}
+/* https://codepen.io/shaunrfox/pen/kBaoK */
