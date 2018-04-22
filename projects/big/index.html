@@ -16,14 +16,32 @@
 <body>
 
   <div id="start">
-    <div class="mdc-form-field center">
+    <!-- Enter user blog -->
+    <div class="mdc-form-field center" id="user-form-field">
       <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-        <input type=" text " id="my-text-field " class="mdc-text-field__input">
-        <label class="mdc-floating-label " for="my-text-field ">Your Blog URL (example.tumblr.com)</label>
+        <input type="text" id="user-blog-input" class="mdc-text-field__input">
+        <label class="mdc-floating-label " for="user-blog-input">Your Blog URL (example.tumblr.com)</label>
         <div class="mdc-line-ripple "></div>
       </div>
+      <button id="user-submit" class="mdc-fab material-icons" aria-label="Favorite">
+        <span class="mdc-fab__icon">
+          Submit
+        </span>
+      </button>
     </div>
-  </div>
+    <!-- Enter comparison blog -->
+    <div class="mdc-form-field center hidden" id="comp-form-field">
+      <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+        <input type="text" id="comp-blog-input" class="mdc-text-field__input">
+        <label class="mdc-floating-label " for="comp-blog-input">Comparison Blog URL (example.tumblr.com)</label>
+        <div class="mdc-line-ripple "></div>
+      </div>
+      <button id="comp-submit" class="mdc-fab material-icons" aria-label="Favorite">
+        <span class="mdc-fab__icon">
+          Submit
+        </span>
+      </button>
+    </div>
   </div>
   <div id="results " class="hidden ">
     <button>smol</button>
