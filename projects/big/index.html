@@ -8,21 +8,48 @@
   <title>Document</title>
 
   <!-- MCW -->
-  <link rel="stylesheet" href="./static/mcw.css">
-  <!-- MCW -->
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.css">
+  <!-- Static -->
+  <link rel="stylesheet" href="./static/scripts/style.css">
 </head>
 
-<body class="mdc-typography">
+<body>
 
-  <h2 class="mdc-typography--display2">Hello, Material Components!</h2>
-  <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
-    <input type="text" class="mdc-text-field__input" id="demo-input">
-    <label for="demo-input" class="mdc-floating-label">Tell us how you feel!</label>
+  <div id="start">
+    <div class="mdc-form-field center">
+      <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+        <input type=" text " id="my-text-field " class="mdc-text-field__input">
+        <label class="mdc-floating-label " for="my-text-field ">Your Blog URL (example.tumblr.com)</label>
+        <div class="mdc-line-ripple "></div>
+      </div>
+    </div>
   </div>
+  </div>
+  <div id="results " class="hidden ">
+    <button>smol</button>
+  </div>
+  <div id="profile " class="hidden ">HEROO2</div>
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- MCW -->
-  <script src="./static/mcw.js"></script>
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js "></script>
   <script>mdc.autoInit()</script>
+  <!-- jQuery -->
+  <script src="http://code.jquery.com/jquery-3.3.1.js " integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="
+      anonymous "></script>
+  <!-- Static -->
+  <script src="./static/scripts/script.js "></script>
 </body>
 
 </html>
