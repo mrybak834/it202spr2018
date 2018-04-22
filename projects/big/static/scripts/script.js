@@ -1,5 +1,7 @@
 // https://api.tumblr.com/v2/blog/blackpplluvtshirts.tumblr.com/posts/photo?api_key=VV08xHlettWixKTtehz4B2h6jnBbIIB4mTsswmxLGb8eT8CXdh
 // https://api.tumblr.com/v2/blog/blackpplluvtshirts.tumblr.com/posts/text?api_key=VV08xHlettWixKTtehz4B2h6jnBbIIB4mTsswmxLGb8eT8CXdh&filter=text
+// blackpplluvtshirts.tumblr.com
+// tattoome.tumblr.com
 $(document).ready(function() {
     console.log('ready!');
     var userBlog = '';
@@ -23,7 +25,9 @@ $(document).ready(function() {
         compBlog = $('#comp-blog-input').val();
         console.log(compBlog);
 
-        // Hide comp and , show results page
+        // Hide comp and start page, show results page
         $('#comp-form-field').toggleClass('hidden');
+        $('#start').toggleClass('hidden');
+        $('#results').toggleClass('hidden');
     });
 });
