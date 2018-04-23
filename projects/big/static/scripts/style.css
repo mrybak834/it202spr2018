@@ -217,13 +217,13 @@ body {
 
 #user-piechart {
     position: absolute;
-    width: 20vw;
+    width: 40vw;
     height: 50vh;
 }
 
 #comp-piechart {
     position: absolute;
     left: 50%;
-    width: 20vw;
+    width: 40vw;
     height: 50vh;
 }
