@@ -5708,9 +5708,8 @@ $(document).ready(function() {
             },
 
             success: function(data, textStatus, jqXHR) {
-                // console.log('Google API result');
-                // console.log(data);
                 // Populate profile
+                userGoogleData = data;
                 userGoogleData.responses.forEach(function(response) {
                     response.labelAnnotations.forEach(function(annotation) {
                         var description = annotation.description.trim().toLowerCase();
@@ -5733,6 +5732,8 @@ $(document).ready(function() {
                 // console.log(userRequest);
             }
         });
+
+        
 
     }
 
@@ -5778,9 +5779,8 @@ $(document).ready(function() {
             },
 
             success: function(data, textStatus, jqXHR) {
-                // console.log('Google API result');
-                // console.log(data);
                 // Populate profile
+                compGoogleData = data;
                 compGoogleData.responses.forEach(function(response) {
                     response.labelAnnotations.forEach(function(annotation) {
                         var description = annotation.description.trim().toLowerCase();
