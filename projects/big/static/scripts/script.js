@@ -28,7 +28,7 @@ $(document).ready(function() {
     /** MODAL */
 
     console.log('ready!');
-    var testMode = true;
+    var testMode = false;
     var userBlog = '';
     var compBlog = '';
     var userPhotos = [];
