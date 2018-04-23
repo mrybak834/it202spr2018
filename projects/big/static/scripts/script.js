@@ -1,5 +1,6 @@
 $(document).ready(function() {
     console.log('ready!');
+    var testMode = true;
     var userBlog = '';
     var compBlog = '';
     var userPhotos = [];
@@ -5595,46 +5596,54 @@ $(document).ready(function() {
     function getResults() {
         // Obtain user blog
         console.log('Attempting to get blogs');
-        $.ajax({
-            type: 'POST',
-            url:
-                'https://api.tumblr.com/v2/blog/' +
-                userBlog +
-                '/posts/photo?api_key=' +
-                tumblrAPI,
-            dataType: 'jsonp',
-            success: function(data, textStatus, jqXHR) {
-                // console.log('Tumblr API result');
-                userTumblrData = data;
-                console.log(userTumblrData);
-                getCompBlogs();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
-            }
-        });
-        // getCompBlogs(); // Delete this
+        if (!testMode){
+            $.ajax({
+                type: 'POST',
+                url:
+                    'https://api.tumblr.com/v2/blog/' +
+                    userBlog +
+                    '/posts/photo?api_key=' +
+                    tumblrAPI,
+                dataType: 'jsonp',
+                success: function(data, textStatus, jqXHR) {
+                    // console.log('Tumblr API result');
+                    userTumblrData = data;
+                    console.log(userTumblrData);
+                    getCompBlogs();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
+                }
+            });
+        }
+        else {
+            getCompBlogs();
+        }
     }
 
     function getCompBlogs() {
-        $.ajax({
-            type: 'POST',
-            url:
-                'https://api.tumblr.com/v2/blog/' +
-                compBlog +
-                '/posts/photo?api_key=' +
-                tumblrAPI,
-            dataType: 'jsonp',
-            success: function(data, textStatus, jqXHR) {
-                // console.log('Tumblr API result');
-                compTumblrData = data;
-                obtainPhotos();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
-            }
-        });
-        // obtainPhotos(); // Delete this
+        if (!testMode){
+            $.ajax({
+                type: 'POST',
+                url:
+                    'https://api.tumblr.com/v2/blog/' +
+                    compBlog +
+                    '/posts/photo?api_key=' +
+                    tumblrAPI,
+                dataType: 'jsonp',
+                success: function(data, textStatus, jqXHR) {
+                    // console.log('Tumblr API result');
+                    compTumblrData = data;
+                    obtainPhotos();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
+                }
+            });
+        }
+        else {
+            obtainPhotos();
+        }
     }
 
     function obtainPhotos() {
@@ -5696,59 +5705,62 @@ $(document).ready(function() {
         }
         userGoogleRequest = JSON.stringify(userGoogleRequest);
 
-        $.ajax({
-            type: 'POST',
-            url:
-                'https://vision.googleapis.com/v1/images:annotate?key=' +
-                googleAPI,
-            dataType: 'json',
-            data: userGoogleRequest,
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        if (!testMode){
+            $.ajax({
+                type: 'POST',
+                url:
+                    'https://vision.googleapis.com/v1/images:annotate?key=' +
+                    googleAPI,
+                dataType: 'json',
+                data: userGoogleRequest,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
 
-            success: function(data, textStatus, jqXHR) {
-                // Populate profile
-                userGoogleData = data;
-                userGoogleData.responses.forEach(function(response) {
-                    response.labelAnnotations.forEach(function(annotation) {
-                        var description = annotation.description.trim().toLowerCase();
+                success: function(data, textStatus, jqXHR) {
+                    // Populate profile
+                    userGoogleData = data;
+                    userGoogleData.responses.forEach(function(response) {
+                        response.labelAnnotations.forEach(function(annotation) {
+                            var description = annotation.description.trim().toLowerCase();
 
-                        // If the description exists, increment the entry
-                        if (description in userProfile) {
-                            var value = userProfile[description];
-                            ++value;
-                            userProfile[description] = value;
-                        } else {
-                            userProfile[description] = 1;
-                        }
+                            // If the description exists, increment the entry
+                            if (description in userProfile) {
+                                var value = userProfile[description];
+                                ++value;
+                                userProfile[description] = value;
+                            } else {
+                                userProfile[description] = 1;
+                            }
+                        });
                     });
+
+                    getCompVisionData();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
+                    // console.log(userRequest);
+                }
+            });
+        }
+        else{
+            userGoogleData.responses.forEach(function(response) {
+                response.labelAnnotations.forEach(function(annotation) {
+                    var description = annotation.description.trim().toLowerCase();
+
+                    // If the description exists, increment the entry
+                    if (description in userProfile) {
+                        var value = userProfile[description];
+                        ++value;
+                        userProfile[description] = value;
+                    } else {
+                        userProfile[description] = 1;
+                    }
                 });
+            });
 
-                getCompVisionData();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
-                // console.log(userRequest);
-            }
-        });
-
-        // userGoogleData.responses.forEach(function(response) {
-        //     response.labelAnnotations.forEach(function(annotation) {
-        //         var description = annotation.description.trim().toLowerCase();
-
-        //         // If the description exists, increment the entry
-        //         if (description in userProfile) {
-        //             var value = userProfile[description];
-        //             ++value;
-        //             userProfile[description] = value;
-        //         } else {
-        //             userProfile[description] = 1;
-        //         }
-        //     });
-        // });
-
-        // getCompVisionData();
+            getCompVisionData();
+        }
 
     }
 
@@ -5782,58 +5794,62 @@ $(document).ready(function() {
         }
         compGoogleRequest = JSON.stringify(compGoogleRequest);
 
-        $.ajax({
-            type: 'POST',
-            url:
-                'https://vision.googleapis.com/v1/images:annotate?key=' +
-                googleAPI,
-            dataType: 'json',
-            data: compGoogleRequest,
-            headers: {
-                'Content-Type': 'application/json'
-            },
+        if(!testMode){
+            $.ajax({
+                type: 'POST',
+                url:
+                    'https://vision.googleapis.com/v1/images:annotate?key=' +
+                    googleAPI,
+                dataType: 'json',
+                data: compGoogleRequest,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
 
-            success: function(data, textStatus, jqXHR) {
-                // Populate profile
-                compGoogleData = data;
-                compGoogleData.responses.forEach(function(response) {
-                    response.labelAnnotations.forEach(function(annotation) {
-                        var description = annotation.description.trim().toLowerCase();
+                success: function(data, textStatus, jqXHR) {
+                    // Populate profile
+                    compGoogleData = data;
+                    compGoogleData.responses.forEach(function(response) {
+                        response.labelAnnotations.forEach(function(annotation) {
+                            var description = annotation.description.trim().toLowerCase();
 
-                        // If the description exists, increment the entry
-                        if (description in compProfile) {
-                            var value = compProfile[description];
-                            ++value;
-                            compProfile[description] = value;
-                        } else {
-                            compProfile[description] = 1;
-                        }
+                            // If the description exists, increment the entry
+                            if (description in compProfile) {
+                                var value = compProfile[description];
+                                ++value;
+                                compProfile[description] = value;
+                            } else {
+                                compProfile[description] = 1;
+                            }
+                        });
                     });
+
+                    compareProfiles();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
+                    // console.log(userRequest);
+                }
+            });
+        }
+        else{
+            compGoogleData.responses.forEach(function(response) {
+                response.labelAnnotations.forEach(function(annotation) {
+                    var description = annotation.description.trim().toLowerCase();
+
+                    // If the description exists, increment the entry
+                    if (description in compProfile) {
+                        var value = compProfile[description];
+                        ++value;
+                        compProfile[description] = value;
+                    } else {
+                        compProfile[description] = 1;
+                    }
                 });
+            });
 
-                compareProfiles();
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
-                // console.log(userRequest);
-            }
-        });
-        // compGoogleData.responses.forEach(function(response) {
-        //     response.labelAnnotations.forEach(function(annotation) {
-        //         var description = annotation.description.trim().toLowerCase();
-
-        //         // If the description exists, increment the entry
-        //         if (description in compProfile) {
-        //             var value = compProfile[description];
-        //             ++value;
-        //             compProfile[description] = value;
-        //         } else {
-        //             compProfile[description] = 1;
-        //         }
-        //     });
-        // });
-
-        // compareProfiles();
+            compareProfiles();    
+        }
 
     }
 
