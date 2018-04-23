@@ -68,21 +68,12 @@ body {
     box-sizing: border-box;
 }
 
-.box {
-    width: 100px;
-    height: 100%;
-    background: black;
-    float: left;
-    display: inline-block;
-    margin-right: 10px;
-}
-
 .images-wrapper {
-    width: 60%;
-    height: 200px;
+    width: 60vw;
+    height: 30vh;
     background: #ccc;
-    margin: 1rem auto;
-    padding: 1rem;
+    margin: 10vh auto;
+    padding: 1vh;
     overflow-y: hidden;
     overflow-x: auto;
     white-space: nowrap;
@@ -115,3 +106,12 @@ body {
     border: 1px solid #666;
 }
 /* https://codepen.io/shaunrfox/pen/kBaoK */
+
+#view-profile {
+    width: 10vh;
+    height: 10vh;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
