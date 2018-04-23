@@ -5528,7 +5528,7 @@ $(document).ready(function() {
             {
                 image: {
                     source: {
-                        imageUri: user      Photos[1]
+                        imageUri: userPhotos[1]
                     }
                 },
                 features: [
@@ -5807,7 +5807,9 @@ $(document).ready(function() {
     }
 
     function compareProfiles(){
-        console.log("User profile " + userProfile);
-        console.log("Comp Profile " + compProfile);
+        console.log("User profile");
+        console.log(userProfile);
+        console.log("Comp Profile");
+        console.log(compProfile);
     }
 });
