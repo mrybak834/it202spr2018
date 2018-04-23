@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.css">
   <!-- Static -->
   <link rel="stylesheet" href="./static/scripts/style.css">
+  <!-- Google Visualization -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -50,13 +52,38 @@
     <div id="comp-images" class="images-wrapper">
     </div>
     <!-- https://codepen.io/shaunrfox/pen/kBaoK -->
+    <button id="view-results" class="mdc-fab material-icons" aria-label="Favorite">
+      <span class="mdc-fab__icon">
+        Results
+      </span>
+    </button>
+    <!-- The Modal -->
+    <div id="resultsModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Results</h2>
+        </div>
+        <div class="modal-body">
+          <div id="user-piechart"></div>
+          <div id="comp-piechart"></div>
+        </div>
+      </div>
+
+    </div>
     <button id="view-profile" class="mdc-fab material-icons" aria-label="Favorite">
       <span class="mdc-fab__icon">
-        Submit
+        Profile
       </span>
     </button>
   </div>
-  <div id=" profile " class="hidden ">HEROO2</div>
+  <div id="profile" class="hidden">
+    <ul>
+      <li id="locationDisplay"></li>
+    </ul>
+  </div>
 
 
 
