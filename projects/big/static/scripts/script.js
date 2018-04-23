@@ -5595,46 +5595,46 @@ $(document).ready(function() {
     function getResults() {
         // Obtain user blog
         console.log('Attempting to get blogs');
-        // $.ajax({
-        //     type: 'POST',
-        //     url:
-        //         'https://api.tumblr.com/v2/blog/' +
-        //         userBlog +
-        //         '/posts/photo?api_key=' +
-        //         tumblrAPI,
-        //     dataType: 'jsonp',
-        //     success: function(data, textStatus, jqXHR) {
-        //         // console.log('Tumblr API result');
-        //         userTumblrData = data;
-        //         console.log(userTumblrData);
-        //         getCompBlogs();
-        //     },
-        //     error: function(jqXHR, textStatus, errorThrown) {
-        //         console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
-        //     }
-        // });
-        getCompBlogs(); // Delete this
+        $.ajax({
+            type: 'POST',
+            url:
+                'https://api.tumblr.com/v2/blog/' +
+                userBlog +
+                '/posts/photo?api_key=' +
+                tumblrAPI,
+            dataType: 'jsonp',
+            success: function(data, textStatus, jqXHR) {
+                // console.log('Tumblr API result');
+                userTumblrData = data;
+                console.log(userTumblrData);
+                getCompBlogs();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
+            }
+        });
+        // getCompBlogs(); // Delete this
     }
 
     function getCompBlogs() {
-        // $.ajax({
-        //     type: 'POST',
-        //     url:
-        //         'https://api.tumblr.com/v2/blog/' +
-        //         compBlog +
-        //         '/posts/photo?api_key=' +
-        //         tumblrAPI,
-        //     dataType: 'jsonp',
-        //     success: function(data, textStatus, jqXHR) {
-        //         // console.log('Tumblr API result');
-        //         compTumblrData = data;
-        //         obtainPhotos();
-        //     },
-        //     error: function(jqXHR, textStatus, errorThrown) {
-        //         console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
-        //     }
-        // });
-        obtainPhotos(); // Delete this
+        $.ajax({
+            type: 'POST',
+            url:
+                'https://api.tumblr.com/v2/blog/' +
+                compBlog +
+                '/posts/photo?api_key=' +
+                tumblrAPI,
+            dataType: 'jsonp',
+            success: function(data, textStatus, jqXHR) {
+                // console.log('Tumblr API result');
+                compTumblrData = data;
+                obtainPhotos();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
+            }
+        });
+        // obtainPhotos(); // Delete this
     }
 
     function obtainPhotos() {
@@ -5733,7 +5733,22 @@ $(document).ready(function() {
             }
         });
 
-        
+        // userGoogleData.responses.forEach(function(response) {
+        //     response.labelAnnotations.forEach(function(annotation) {
+        //         var description = annotation.description.trim().toLowerCase();
+
+        //         // If the description exists, increment the entry
+        //         if (description in userProfile) {
+        //             var value = userProfile[description];
+        //             ++value;
+        //             userProfile[description] = value;
+        //         } else {
+        //             userProfile[description] = 1;
+        //         }
+        //     });
+        // });
+
+        // getCompVisionData();
 
     }
 
@@ -5795,14 +5810,30 @@ $(document).ready(function() {
                         }
                     });
                 });
+
+                compareProfiles();
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('ERRORS: ' + textStatus + ' ' + errorThrown);
                 // console.log(userRequest);
             }
         });
+        // compGoogleData.responses.forEach(function(response) {
+        //     response.labelAnnotations.forEach(function(annotation) {
+        //         var description = annotation.description.trim().toLowerCase();
 
-        compareProfiles();
+        //         // If the description exists, increment the entry
+        //         if (description in compProfile) {
+        //             var value = compProfile[description];
+        //             ++value;
+        //             compProfile[description] = value;
+        //         } else {
+        //             compProfile[description] = 1;
+        //         }
+        //     });
+        // });
+
+        // compareProfiles();
 
     }
 
