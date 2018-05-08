@@ -22,6 +22,7 @@
 
         #map {
             height: 100%;
+
         }
 
         /* Optional: Makes the sample page fill the window. */
@@ -32,12 +33,56 @@
             margin: 0;
             padding: 0;
         }
+
+        .hidden {
+            display: none;
+        }
+
+        .centered {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
+
+        .center {
+            position: fixed;
+            top: 50%;
+            left: 30%;
+            /* bring your own prefixes */
+            transform: translate(-50%, -50%);
+        }
     </style>
 
 </head>
 
 <body>
-    <div id="map"></div>
+    <div id="map" class="hidden"></div>
+    <div class="container">
+        <div class="center">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="" id="sti_check">STI Specialty Clinic</label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="" id="mental_check">Mental Health Clinic</label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="" id="wic_check">WIC Clinic</label>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary centered" id="search_button">Primary</button>
+    </div>
+
+
+
+
+
+
+
     <script>
         var map;
         function initMap() {
@@ -46,8 +91,48 @@
                 zoom: 8
             });
         }
+
+        $(document).ready(function () {
+            console.log("Ready");
+
+            // Allow only one input type
+            $('input[type="checkbox"]').on('change', function () {
+                $('input[type="checkbox"]').not(this).prop('checked', false);
+            });
+
+            $("#search_button").click(function () {
+                // Gather search options
+                query_string = "";
+                if ($("#sti_check").is(":checked")) {
+                    console.log("sti");
+                    query_string = "https://data.cityofchicago.org/resource/t57k-za2y.json?clinic_type=STI%20Specialty%20Clinic";
+                }
+                else if ($("#mental_check").is(":checked")) {
+                    console.log("mental");
+                    query_string = "https://data.cityofchicago.org/resource/t57k-za2y.json?clinic_type=Mental%20Health%20Clinic";
+                }
+                else {
+                    // DEFAULT TO WIC
+                    console.log("WIC");
+                    query_string = "https://data.cityofchicago.org/resource/t57k-za2y.json?clinic_type=WIC%20Clinic";
+                }
+
+                // Make request
+                $.ajax(query_string)
+                    .done(function (data) {
+                        console.log(data);
+
+                    })
+                    .fail(function () {
+                        alert("error");
+                    })
+                    .always(function () {
+                        alert("complete");
+                    });
+            });
+        });
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key= AIzaSyB_-AUXUjTOZvW2Mmu1XP8L_yR3QeP_uPc&callback=initMap" async
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB_-AUXUjTOZvW2Mmu1XP8L_yR3QeP_uPc&callback=initMap" async
         defer></script>
 </body>
 
